@@ -10,6 +10,8 @@ using UnityEngine.EventSystems;
 public class Pot : MonoBehaviour, IPointerDownHandler
 {
     private readonly float cookingTime = 2f;
+    private readonly float doubleClickTime = 0.5f;
+    private float lastClickTime = 0f;
 
     [SerializeField] private Recipes recipesData;
     [SerializeField] private Text elementsInside;
@@ -133,7 +135,11 @@ public class Pot : MonoBehaviour, IPointerDownHandler
         {
             Debug.Log(recipe.Name);
 
-            if (recipe == currentMixture) ChangeStatus(PotionStatus.Ready);
+            if (recipe == currentMixture)
+            {
+                currentMixture.Name = recipe.Name;
+                ChangeStatus(PotionStatus.Ready);
+            }
         }
 
         if (validRecipes.Count == 0) ChangeStatus(PotionStatus.Bad);
@@ -160,12 +166,16 @@ public class Pot : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down!!!!!!!!!!!!!!!!!!");
-//        Destroy(gameObject);
-    }
+        if ((lastClickTime + doubleClickTime) > Time.time)
+        {
+            if (Status == PotionStatus.Ready)
+                Debug.Log("GREAT! " + currentMixture.Name + " successfully created and sold!");
+            ClearPot();
+        }
+        else
+        {
+            lastClickTime = Time.time;
+        }
 
-    //public void OnMouseDown()
-    //{
-    //    Destroy(gameObject);
-    //}
+    }
 }
