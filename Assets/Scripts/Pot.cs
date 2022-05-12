@@ -5,8 +5,9 @@ using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
-public class Pot : MonoBehaviour
+public class Pot : MonoBehaviour, IPointerDownHandler
 {
     private readonly float cookingTime = 2f;
 
@@ -40,10 +41,10 @@ public class Pot : MonoBehaviour
     {
         if (Status == PotionStatus.Ready) return;
 
-        var element = collider.GetComponent<Element>();
-        if (element != null)
+        var chemical = collider.GetComponent<Chemical>();
+        if (chemical != null)
         { 
-            CheckChemicals(element);
+            CheckChemicals(chemical);
         }
 
         var crystall = collider.GetComponent<Crystall>();
@@ -92,9 +93,9 @@ public class Pot : MonoBehaviour
         }
     }
 
-    private void CheckChemicals(Element element)
+    private void CheckChemicals(Chemical chemical)
     {
-        var type = element.Type;
+        var type = chemical.Type;
 
         ChangeStatus(PotionStatus.NotEmpty);
 
@@ -156,4 +157,15 @@ public class Pot : MonoBehaviour
     {
         OnStatusChanged = null;
     }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Down!!!!!!!!!!!!!!!!!!");
+//        Destroy(gameObject);
+    }
+
+    //public void OnMouseDown()
+    //{
+    //    Destroy(gameObject);
+    //}
 }

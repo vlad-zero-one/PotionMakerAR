@@ -1,4 +1,4 @@
-﻿public enum ElementType
+﻿public enum ChemicalType
 {
     Default = 0,
 

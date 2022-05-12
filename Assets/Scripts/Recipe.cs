@@ -7,17 +7,17 @@ using UnityEngine;
 public class Recipe
 {
     public string Name;
-    public List<ElementType> Chemicals;
+    public List<ChemicalType> Chemicals;
     public ProcessingType Processing;
 
     public Recipe()
     {
         Name = "";
-        Chemicals = new List<ElementType>();
+        Chemicals = new List<ChemicalType>();
         Processing = ProcessingType.None;
     }
 
-    public void Add(ElementType chemical)
+    public void Add(ChemicalType chemical)
     {
         Chemicals.Add(chemical);
     }
@@ -26,10 +26,10 @@ public class Recipe
     {
         var returnValue = true;
 
-        foreach (var element in new HashSet<ElementType>(recipe1.Chemicals))
+        foreach (var chem in new HashSet<ChemicalType>(recipe1.Chemicals))
         {
-            if (recipe1.Chemicals.Where(type => type == element).Count()
-                != recipe2.Chemicals.Where(type => type == element).Count())
+            if (recipe1.Chemicals.Where(type => type == chem).Count()
+                != recipe2.Chemicals.Where(type => type == chem).Count())
             {
                 returnValue = false;
             }
@@ -51,14 +51,14 @@ public class Recipe
 
         var union = recipe.Chemicals.Union(Chemicals);
 
-        foreach (var element in union)
+        foreach (var chem in union)
         {
-            Debug.Log("RECIPE " + Name + ": " + element + " " + Chemicals.Where(chem => chem == element).Count());
-            Debug.Log("RECIPE " + recipe.Name + ": " + element + " " + recipe.Chemicals.Where(chem => chem == element).Count());
+            //Debug.Log("RECIPE " + Name + ": " + element + " " + Chemicals.Where(chem => chem == element).Count());
+            //Debug.Log("RECIPE " + recipe.Name + ": " + element + " " + recipe.Chemicals.Where(chem => chem == element).Count());
 
 
-            if (Chemicals.Where(type => type == element).Count()
-                >= recipe.Chemicals.Where(type => type == element).Count())
+            if (Chemicals.Where(type => type == chem).Count()
+                >= recipe.Chemicals.Where(type => type == chem).Count())
             {
                 returnValue = true;
             }
