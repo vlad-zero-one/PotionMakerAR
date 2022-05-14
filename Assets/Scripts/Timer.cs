@@ -6,24 +6,36 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    readonly private int levelTime = 60;
+    public delegate void TimerDelegate();
+    public event TimerDelegate OnTimeIsUp;
+
+    [SerializeField] private int levelTime = 60;
 
     private Text timerText;
 
     private int currentTime;
 
-    void Start()
+    private Coroutine coroutine;
+
+    public void Restart()
+    {
+        currentTime = levelTime;
+
+        StartTimer();
+    }
+
+    private void Start()
+    {
+        StartTimer();
+    }
+
+    private void StartTimer()
     {
         timerText = GetComponent<Text>();
 
         currentTime = levelTime;
         timerText.text = currentTime.ToString();
-        StartTimer();
-    }
-
-    public void StartTimer()
-    {
-        StartCoroutine(DecreaseTimer());
+        coroutine = StartCoroutine(DecreaseTimer());
     }
 
     private IEnumerator DecreaseTimer(int decrement = 1)
@@ -35,11 +47,14 @@ public class Timer : MonoBehaviour
             currentTime -= decrement;
             timerText.text = currentTime.ToString();
         }
+
+        OnTimeIsUp?.Invoke();
+
+        StopCoroutine(coroutine);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        OnTimeIsUp = null;
     }
 }

@@ -22,6 +22,9 @@ public class Pot : MonoBehaviour, IPointerDownHandler
     public delegate void StatusChangeDelegate(PotionStatus newStatus);
     public event StatusChangeDelegate OnStatusChanged;
 
+    public delegate void RecipeDelegate(Recipe recipe);
+    public event RecipeDelegate OnPotionSold;
+
     private List<Recipe> recipes;
 
     private Coroutine currentProcess;
@@ -138,6 +141,7 @@ public class Pot : MonoBehaviour, IPointerDownHandler
             if (recipe == currentMixture)
             {
                 currentMixture.Name = recipe.Name;
+                currentMixture.Score = recipe.Score;
                 ChangeStatus(PotionStatus.Ready);
             }
         }
@@ -162,6 +166,7 @@ public class Pot : MonoBehaviour, IPointerDownHandler
     private void OnDestroy()
     {
         OnStatusChanged = null;
+        OnPotionSold = null;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -169,13 +174,15 @@ public class Pot : MonoBehaviour, IPointerDownHandler
         if ((lastClickTime + doubleClickTime) > Time.time)
         {
             if (Status == PotionStatus.Ready)
+            {
                 Debug.Log("GREAT! " + currentMixture.Name + " successfully created and sold!");
+                OnPotionSold?.Invoke(currentMixture);
+            }
             ClearPot();
         }
         else
         {
             lastClickTime = Time.time;
         }
-
     }
 }

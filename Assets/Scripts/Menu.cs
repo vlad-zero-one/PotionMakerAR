@@ -2,26 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField] private Timer timer;
+    [SerializeField] private ScoreContainer scoreContainer;
+
     private List<GameObject> buttons = new List<GameObject>();
-
-    private void Awake()
-    {
-        foreach (Transform tr in transform)
-        {
-            buttons.Add(tr.gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ShowOrHideMenu();
-        }
-    }
 
     public void ShowOrHideMenu()
     {
@@ -33,8 +21,52 @@ public class Menu : MonoBehaviour
         }
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void Restart()
+    {
+        timer.Restart();
+        scoreContainer.Reset();
+        scoreContainer.SetActive(false);
+
+        ShowOrHideMenu();
+    }
+
+    private void Awake()
+    {
+        foreach (Transform tr in transform)
+        {
+            buttons.Add(tr.gameObject);
+        }
+
+        timer.OnTimeIsUp += ShowScore;
+    }
+
+    private void ShowScore()
+    {
+        ShowOrHideMenu();
+
+        scoreContainer.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ShowOrHideMenu();
+        }
+    }
+
     private void PauseOrPlay()
     {
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    }
+
+    private void OnDestroy()
+    {
+        timer.OnTimeIsUp -= ShowScore;
     }
 }

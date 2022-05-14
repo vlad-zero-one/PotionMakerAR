@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -19,14 +18,14 @@ public class RecipesToDropdown : MonoBehaviour
 
         foreach (var recipe in recipesData.Values)
         {
-            var recipeContainment = "";
+            var recipeContainment = $"{recipe.Name}(";
 
-            foreach(var chem in recipe.Chemicals)
+            foreach (var chem in recipe.Chemicals)
             {
-                recipeContainment += dict[chem] + "+";
+                recipeContainment += $"{dict[chem]}+";
             }
 
-            if(recipe.Processing == ProcessingType.Cooling)
+            if (recipe.Processing == ProcessingType.Cooling)
             {
                 recipeContainment += "Cool";
             }
@@ -38,6 +37,8 @@ public class RecipesToDropdown : MonoBehaviour
             {
                 recipeContainment = recipeContainment.TrimEnd('+');
             }
+
+            recipeContainment = $"{recipeContainment})";
 
             listForDropdown.Add(recipeContainment);
         }

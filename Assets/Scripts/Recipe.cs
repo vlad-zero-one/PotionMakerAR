@@ -9,6 +9,7 @@ public class Recipe
     public string Name;
     public List<ChemicalType> Chemicals;
     public ProcessingType Processing;
+    public int Score;
 
     public Recipe()
     {

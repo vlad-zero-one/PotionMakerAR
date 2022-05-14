@@ -16,9 +16,12 @@ MonoBehaviour:
   - Name: EnergyPotion
     Chemicals: 0200000001000000
     Processing: 1
+    Score: 20
   - Name: ManaPotion
     Chemicals: 01000000
     Processing: 2
+    Score: 15
   - Name: DoubleSulfur
     Chemicals: 0100000001000000
     Processing: 0
+    Score: 10
