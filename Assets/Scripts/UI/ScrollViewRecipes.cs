@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -7,6 +6,7 @@ public class ScrollViewRecipes : MonoBehaviour
 {
     [SerializeField] Recipes recipesData;
     [SerializeField] ChemicalSymbolMap map;
+    [SerializeField] RectTransform canvasRectTransform;
     [SerializeField] GameObject content;
     [SerializeField] GameObject recipePrefab;
 
@@ -20,10 +20,15 @@ public class ScrollViewRecipes : MonoBehaviour
         var dict = map.Values.ToDictionary(elem => elem.Chemical, elem => elem.Symbol);
 
         var contentRectTransform = content.GetComponent<RectTransform>();
-        var contentWidth = contentRectTransform.rect.width;
         var contentHeight = contentRectTransform.rect.height;
 
-        var recipePrefabHeight = recipePrefab.GetComponent<RectTransform>().rect.height;
+        var recipePrefabRectTransform = recipePrefab.GetComponent<RectTransform>();
+
+        var canvasHeight = canvasRectTransform.rect.height;
+
+        recipePrefabRectTransform.sizeDelta = new Vector2(0, canvasHeight / 8);
+
+        var recipePrefabHeight = recipePrefabRectTransform.rect.height;
 
         foreach (var recipe in recipesData.Values)
         {
@@ -51,8 +56,8 @@ public class ScrollViewRecipes : MonoBehaviour
 
             var go = Instantiate(recipePrefab, contentRectTransform);
 
-            contentHeight = contentHeight + recipePrefabHeight;
-            contentRectTransform.sizeDelta = new Vector2(contentWidth, contentHeight);
+            contentHeight += recipePrefabHeight;
+            contentRectTransform.sizeDelta = new Vector2(0, contentHeight);
 
             go.GetComponent<Text>().text = recipeContainment;
         }

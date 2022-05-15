@@ -29,51 +29,19 @@ MonoBehaviour:
     Chemicals: 0200000002000000020000000200000002000000
     Processing: 2
     Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
+  - Name: HealingPotion
+    Chemicals: 010000000200000003000000
     Processing: 2
     Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
+  - Name: FreezingPoison
+    Chemicals: 010000000200000002000000
+    Processing: 1
+    Score: 25
+  - Name: FireBomb
+    Chemicals: 0200000002000000
     Processing: 2
     Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
-  - Name: Poison
-    Chemicals: 0200000002000000020000000200000002000000
-    Processing: 2
-    Score: 30
+  - Name: SecretPotion
+    Chemicals: 01000000020000000300000003000000
+    Processing: 1
+    Score: 35

@@ -28,11 +28,6 @@ public class ScoreContainer : MonoBehaviour
         }
     }
 
-    public void SetActive(bool value)
-    {
-        gameObject.SetActive(value);
-    }
-
     public void SetScore(int value)
     {
         score.text = value.ToString();

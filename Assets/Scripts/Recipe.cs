@@ -1,9 +1,8 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Recipe
 {
     public string Name;
@@ -54,10 +53,6 @@ public class Recipe
 
         foreach (var chem in union)
         {
-            //Debug.Log("RECIPE " + Name + ": " + element + " " + Chemicals.Where(chem => chem == element).Count());
-            //Debug.Log("RECIPE " + recipe.Name + ": " + element + " " + recipe.Chemicals.Where(chem => chem == element).Count());
-
-
             if (Chemicals.Where(type => type == chem).Count()
                 >= recipe.Chemicals.Where(type => type == chem).Count())
             {

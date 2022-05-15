@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
 using UnityEngine.EventSystems;
 
 public class Pot : MonoBehaviour, IPointerDownHandler
@@ -111,11 +109,7 @@ public class Pot : MonoBehaviour, IPointerDownHandler
 
     private IEnumerator DelayedStatusChange(PotionStatus newStatus)
     {
-        Debug.Log("STARTED COROUTINE");
-
         yield return new WaitForSeconds(cookingTime);
-
-        Debug.Log("CONTINUE COROUTINE");
 
         ChangeStatus(newStatus);
         currentProcess = null;
@@ -153,9 +147,6 @@ public class Pot : MonoBehaviour, IPointerDownHandler
 
     public void ClearPot()
     {
-        foreach (var chem in currentMixture.Chemicals)
-            Debug.Log("Poured out " + chem);
-
         ChangeStatus(PotionStatus.Empty);
 
         elementsInside.text = "";
@@ -175,7 +166,6 @@ public class Pot : MonoBehaviour, IPointerDownHandler
         {
             if (Status == PotionStatus.Ready)
             {
-                Debug.Log("GREAT! " + currentMixture.Name + " successfully created and sold!");
                 OnPotionSold?.Invoke(currentMixture);
             }
             ClearPot();
