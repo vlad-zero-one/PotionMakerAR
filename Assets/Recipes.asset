@@ -25,3 +25,55 @@ MonoBehaviour:
     Chemicals: 0100000001000000
     Processing: 0
     Score: 10
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30
+  - Name: Poison
+    Chemicals: 0200000002000000020000000200000002000000
+    Processing: 2
+    Score: 30

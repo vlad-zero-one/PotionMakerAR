@@ -3,18 +3,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class RecipesToDropdown : MonoBehaviour
+public class ScrollViewRecipes : MonoBehaviour
 {
     [SerializeField] Recipes recipesData;
     [SerializeField] ChemicalSymbolMap map;
+    [SerializeField] GameObject content;
+    [SerializeField] GameObject recipePrefab;
 
     void Awake()
     {
-        var dropdown = GetComponent<Dropdown>();
-
         var dict = map.Values.ToDictionary(elem => elem.Chemical, elem => elem.Symbol);
 
-        var listForDropdown = new List<string>();
+        var contentRectTransform = content.GetComponent<RectTransform>();
+        var contentWidth = contentRectTransform.rect.width;
+        var contentHeight = contentRectTransform.rect.height;
+
+        var recipePrefabHeight = recipePrefab.GetComponent<RectTransform>().rect.height;
 
         foreach (var recipe in recipesData.Values)
         {
@@ -40,10 +44,12 @@ public class RecipesToDropdown : MonoBehaviour
 
             recipeContainment = $"{recipeContainment})";
 
-            listForDropdown.Add(recipeContainment);
+            var go = Instantiate(recipePrefab, contentRectTransform);
+
+            contentHeight = contentHeight + recipePrefabHeight;
+            contentRectTransform.sizeDelta = new Vector2(contentWidth, contentHeight);
+
+            go.GetComponent<Text>().text = recipeContainment;
         }
-
-
-        dropdown.AddOptions(listForDropdown);
     }
 }
