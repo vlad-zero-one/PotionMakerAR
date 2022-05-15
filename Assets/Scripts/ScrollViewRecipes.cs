@@ -10,7 +10,12 @@ public class ScrollViewRecipes : MonoBehaviour
     [SerializeField] GameObject content;
     [SerializeField] GameObject recipePrefab;
 
-    void Awake()
+    public void ShowOrHide()
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    private void Awake()
     {
         var dict = map.Values.ToDictionary(elem => elem.Chemical, elem => elem.Symbol);
 

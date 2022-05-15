@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="CoolCrystall4" size="100.000000 184.285721" />
-    <ImageTarget name="CoolCrystall3" size="100.000000 185.294113" />
-    <ImageTarget name="CoolCrystall2" size="100.000000 185.294113" />
+    <ImageTarget name="CoolCrystall" size="100.000000 184.285721" />
     <ImageTarget name="Empty" size="100.000000 150.000000" />
     <ImageTarget name="HeatCrystall" size="100.000000 162.857147" />
-    <ImageTarget name="CoolCrystall" size="100.000000 176.470581" />
     <ImageTarget name="Sulfur" size="100.000000 165.454544" />
     <ImageTarget name="Phosphorus" size="100.000000 130.985916" />
     <ImageTarget name="Hydrargyrum" size="100.000000 154.838715" />
