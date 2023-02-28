@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 337229214}
   - component: {fileID: 337229213}
   - component: {fileID: 337229218}
+  - component: {fileID: 337229219}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: Untagged
@@ -1147,6 +1148,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &337229219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337229212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f8891fbceb289428f93b8943edf4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &359075667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2172,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -3.11e-43, y: -1.114e-42, z: 6e-45, w: 1.372e-42}
+  m_BoundingSphereOverride: {x: -6.9e-44, y: -6.9e-44, z: NaN, w: 2.073e-42}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
